@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 東京 7 日遊行程手帳</title>
+    <!-- Google Fonts: Zen Maru Gothic (日系圓體) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-paper: #FFFCF6;
+            --border-ink: #3E3A39;
+            --pink: #F2A497;
+            --yellow: #F6D27A;
+            --blue: #A8D3E6;
+            --green: #B9DAA5;
+            --white: #FFFFFF;
+            --shadow: 4px 4px 0px #3E3A39;
+            --radius: 20px;
+            --font-main: 'Zen Maru Gothic', cursive, sans-serif;
+            
+            /* 交通標籤專用色 (日系平塗色) */
+            --jr-green: #79C25A;
+            --metro-blue: #4BA3E3;
+            --private-purple: #B08BBB;
+            --drive-orange: #FF9F43;
+            --bus-gray: #8395A7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--border-ink);
+            padding-top: 75px;
+            padding-bottom: 85px;
+            overflow-x: hidden;
+        }
+
+        /* 頂端固定選單 */
+        .top-navbar {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 20px);
+            max-width: 500px;
+            background-color: var(--white);
+            border: 3px solid var(--border-ink);
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: var(--border-ink);
+            font-size: 0.75rem;
+            font-weight: 900;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+        }
+
+        .nav-item svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        /* 卡片共用樣式 */
+        .card {
+            background: var(--white);
+            border: 3px solid var(--border-ink);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        /* 首頁區塊 / 倒數 */
+        .hero-card {
+            background-color: var(--yellow);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .hero-sub {
+            font-size: 0.85rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: var(--white);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 14px;
+            border: 2px solid var(--border-ink);
+        }
+
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .time-unit {
+            background: var(--white);
+            border: 2.5px solid var(--border-ink);
+            border-radius: 12px;
+            padding: 4px 8px;
+            min-width: 54px;
+        }
+
+        .time-num {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--border-ink);
+        }
+
+        .time-label {
+            font-size: 0.65rem;
+            font-weight: 900;
+        }
+
+        /* SVG 插圖與飄動動畫 */
+        .illustration {
+            width: 160px;
+            height: 100px;
+            margin: 0 auto 6px;
+            display: block;
+        }
+
+        .floating {
+            animation: float 3.5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(1.5deg); }
+        }
+
+        /* Section 標題 */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title-left::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--pink);
+            border: 2px solid var(--border-ink);
+            border-radius: 50%;
+        }
